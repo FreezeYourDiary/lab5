@@ -28,3 +28,21 @@ def test_multiply(a, b, expected):
 def test_divide(a, b, expected):
     result = utils.divide(a, b)
     assert result == expected
+
+
+@pytest.mark.parametrize("x", [-100, 120.5, 1515])
+def test_zakres(x):
+    with pytest.raises(ValueError, match="out of range"):
+        utils.float_to_binary(x)
+
+
+def test_correct_conversion():
+    assert utils.float_to_binary(0.0) == "0000000000"
+    assert utils.float_to_binary(4) == "0010000000"
+    assert utils.float_to_binary(0.5) == "0000010000"
+
+
+@pytest.mark.parametrize("value", [1, 3.0, 15.0, 0.0])
+def test_is_natural(value):
+    binary = utils.float_to_binary(value)
+    assert binary[-5:] == "00000"
