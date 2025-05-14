@@ -22,13 +22,10 @@ def divide(a: int, b: int) -> float:
 
 
 def float_to_binary(x):
+    """convert to float x with base m"""
     m = 5
     n = 5
-    """convert float x, with base m .
-    """
-    if not (0 <= x <= 100):
+    if not 0 <= x <= 100:
         raise ValueError("out of range range.")
     x_scaled = round(x * 2 ** n)
-    return '{:0{}b}'.format(x_scaled, m + n)
-if __name__ == '__main__':
-    print(float_to_binary(5))
+    return f"{x_scaled:0{m + n}b}"
