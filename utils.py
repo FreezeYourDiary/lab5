@@ -27,5 +27,5 @@ def float_to_binary(x):
     n = 5
     if not 0 <= x <= 100:
         raise ValueError("out of range range.")
-    x_scaled = round(x * 2 ** n)
+    x_scaled = round(x * 2**n)
     return f"{x_scaled:0{m + n}b}"
